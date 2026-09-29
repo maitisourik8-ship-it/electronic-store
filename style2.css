@@ -1,35 +1,64 @@
-*{
+/* =========================================
+   RESET
+========================================= */
+
+* {
     margin: 0;
-    padding:0;
+    padding: 0;
     box-sizing: border-box;
 }
-body{
+
+html,
+body {
+    width: 100%;
+    min-width: 100%;
+    overflow-x: hidden;
+}
+
+body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: #ffffff;
     color: #333;
 }
-header{
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+header {
+    width: 100%;
     background-color: #1689d5;
     color: #ffffff;
 }
-.top-header{
-    height: 75px;
+
+.top-header {
+    width: 100%;
+    min-height: 75px;
+
     display: flex;
     align-items: center;
     justify-content: space-around;
+
     padding: 10px 5%;
+    gap: 20px;
 }
-.logo{
+
+.logo {
     display: flex;
     align-items: center;
     gap: 8px;
+    white-space: nowrap;
 }
-.logo i{
+
+.logo i {
     font-size: 25px;
 }
-.logo h2{
+
+.logo h2 {
     font-size: 20px;
 }
+
 .top-menu {
     text-align: right;
     margin-bottom: 10px;
@@ -44,24 +73,42 @@ header{
 .top-menu a:hover{
     color: rgb(12, 227, 195);
 }
+
+
+/* =========================================
+   SEARCH
+========================================= */
+
 .search-box {
     display: flex;
     width: 45%;
+    max-width: 600px;
 }
 
 .search-box input {
     width: 100%;
+    min-width: 0;
     padding: 12px;
+
     border: none;
     outline: none;
 }
 
 .search-box button {
     width: 50px;
+    flex-shrink: 0;
+
     border: none;
     background: #075da0;
     color: white;
+
+    cursor: pointer;
 }
+
+
+/* =========================================
+   HEADER ICONS
+========================================= */
 
 .header-icons {
     display: flex;
@@ -71,10 +118,20 @@ header{
 .header-icons i {
     cursor: pointer;
 }
+
+
+/* =========================================
+   NAVBAR
+========================================= */
+
 nav {
+    width: 100%;
+
     background-color: #087bc4;
+
     display: flex;
     justify-content: center;
+
     gap: 70px;
     padding: 12px;
 }
@@ -88,8 +145,16 @@ nav a {
 nav a:hover {
     color: rgb(12, 227, 195);
 }
+
+
+/* =========================================
+   HERO
+========================================= */
+
 .hero {
+    width: 100%;
     min-height: 400px;
+
     background-color: #eaf7ff;
 
     display: flex;
@@ -97,6 +162,7 @@ nav a:hover {
     justify-content: space-around;
 
     padding: 20px 10%;
+    gap: 30px;
 }
 
 .hero-text {
@@ -120,10 +186,16 @@ nav a:hover {
 .hero-text button {
     background-color: #087bc4;
     color: white;
+
     border: none;
+
     padding: 12px 25px;
+
     cursor: pointer;
 }
+
+
+/* HERO IMAGE */
 
 .hero-image {
     width: 40%;
@@ -131,12 +203,25 @@ nav a:hover {
 }
 
 .hero-image img {
-   
-    object-fit: cover;
+    display: block;
+
+    width: 85%;
+    max-width: 330px;
+
+    height: auto;
+
+    margin: auto;
 }
+
+
+/* =========================================
+   CONTAINER
+========================================= */
+
 .container {
     width: 90%;
     max-width: 1200px;
+
     margin: 30px auto;
 }
 
@@ -145,9 +230,17 @@ nav a:hover {
     margin-bottom: 20px;
     color: #085fd9;
 }
+
+
+/* =========================================
+   DEALS
+========================================= */
+
 .deal-container {
     display: flex;
+
     justify-content: space-between;
+
     gap: 15px;
 }
 
@@ -158,7 +251,10 @@ nav a:hover {
 
 .deal img {
     width: 200px;
+    max-width: 100%;
+
     height: 90px;
+
     object-fit: contain;
 }
 
@@ -171,10 +267,18 @@ nav a:hover {
     font-size: 12px;
     color: #1689d5;
 }
-.deal pre{
+
+.deal pre {
     font-size: 12px;
-    color:darkgrey;
+    color: darkgray;
+
+    white-space: normal;
 }
+
+
+/* =========================================
+   DISCOUNT
+========================================= */
 
 .discount {
     background-color: #f5f5f5;
@@ -187,11 +291,20 @@ nav a:hover {
 
 .discount button {
     margin-top: 5px;
+
     background: #1689d5;
     color: white;
+
     border: none;
+
     padding: 7px 12px;
 }
+
+
+/* =========================================
+   PRODUCTS
+========================================= */
+
 .products {
     display: flex;
     gap: 20px;
@@ -199,14 +312,18 @@ nav a:hover {
 
 .product-card {
     flex: 1;
+
     border: 1px solid #ddd;
+
     padding: 15px;
+
     text-align: center;
 }
 
 .product-card img {
     width: 100%;
     height: 150px;
+
     object-fit: contain;
 }
 
@@ -222,55 +339,36 @@ nav a:hover {
 
 .product-card button {
     margin-top: 10px;
+
     padding: 8px 15px;
+
     border: none;
+
     background-color: #1689d5;
     color: white;
-}
-.products {
-    display: flex;
-    gap: 20px;
+
+    cursor: pointer;
 }
 
-.product-card {
-    flex: 1;
-    border: 1px solid #ddd;
-    padding: 15px;
-    text-align: center;
-}
 
-.product-card img {
-    width: 100%;
-    height: 150px;
-    object-fit: contain;
-}
+/* =========================================
+   LAUNCHES
+========================================= */
 
-.product-card h3 {
-    font-size: 15px;
-    margin: 10px 0;
-}
-
-.product-card p {
-    color: #1689d5;
-    font-weight: bold;
-}
-
-.product-card button {
-    margin-top: 10px;
-    padding: 8px 15px;
-    border: none;
-    background-color: #1689d5;
-    color: white;
-}
 .launches {
     display: flex;
+
     justify-content: space-between;
+
     text-align: center;
+
+    gap: 20px;
 }
 
 .launches img {
     width: 120px;
     height: 120px;
+
     object-fit: contain;
 }
 
@@ -283,19 +381,33 @@ nav a:hover {
     font-size: 12px;
     color: #1689d5;
 }
-.launches pre{
+
+.launches pre {
     font-size: 12px;
-    color:darkgrey;
+    color: darkgray;
+
+    white-space: normal;
 }
+
+
+/* =========================================
+   OFFERS
+========================================= */
+
 .offers {
     display: flex;
+
     justify-content: space-between;
+
     text-align: center;
+
+    gap: 20px;
 }
 
 .offers img {
     width: 150px;
     height: 130px;
+
     object-fit: contain;
 }
 
@@ -303,23 +415,37 @@ nav a:hover {
     font-size: 13px;
     margin: 5px;
 }
-.offers p {
-  font-size: 12px;
-    color: #1689d5;
 
+.offers p {
+    font-size: 12px;
+    color: #1689d5;
 }
+
+
+/* =========================================
+   DISCOVER
+========================================= */
 
 .discover-title {
     text-align: center;
-     color: #085fd9;
+
+    color: #085fd9;
+
     font-size: 22px;
 }
 
 .discover-subtitle {
     text-align: center;
+
     color: black;
+
     margin: 8px 0 20px;
 }
+
+
+/* =========================================
+   ARTICLES
+========================================= */
 
 .articles {
     display: flex;
@@ -333,6 +459,7 @@ nav a:hover {
 .articles img {
     width: 100%;
     height: 160px;
+
     object-fit: cover;
 }
 
@@ -343,22 +470,40 @@ nav a:hover {
 
 .articles p {
     font-size: 13px;
+
     color: #777;
+
     line-height: 1.5;
 }
 
 .articles a {
     display: block;
+
     margin-top: 10px;
+
     color: #1689d5;
+
     text-decoration: underline;
+
     font-size: 13px;
 }
+
+
+/* =========================================
+   NEWSLETTER
+========================================= */
+
 .newsletter {
+    width: 100%;
+
     background-color: #1689d5;
+
     color: white;
+
     text-align: center;
+
     padding: 35px 20px;
+
     margin-top: 40px;
 }
 
@@ -372,37 +517,54 @@ nav a:hover {
 
 .newsletter-box {
     display: flex;
+
     justify-content: center;
 }
 
 .newsletter-box input {
     width: 300px;
+
     padding: 12px;
+
     border: none;
 }
 
 .newsletter-box button {
     padding: 12px 20px;
+
     border: none;
+
     background-color: #075da0;
+
     color: white;
 }
 
 
+/* =========================================
+   FOOTER
+========================================= */
 
 footer {
+    width: 100%;
+
     background-color: #075da0;
+
     color: white;
 
     display: flex;
+
     justify-content: space-around;
 
     padding: 35px 8%;
+
+    gap: 30px;
 }
 
 .footer-column {
     display: flex;
+
     flex-direction: column;
+
     gap: 8px;
 }
 
@@ -412,12 +574,15 @@ footer {
 
 .footer-column a {
     color: white;
+
     text-decoration: none;
+
     font-size: 13px;
 }
 
 .social {
     display: flex;
+
     gap: 15px;
 }
 
@@ -426,66 +591,510 @@ footer {
 }
 
 
+/* =========================================
+   TABLET
+========================================= */
 
 @media (max-width: 768px) {
 
     .top-header {
-        flex-direction: column;
+        width: 100%;
+
         height: auto;
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+
         gap: 10px;
+
+        padding: 12px 20px;
     }
+
+
+    /* LOGO */
+
+    .logo {
+        width: 100%;
+
+        justify-content: center;
+    }
+
+
+    /* SEARCH */
 
     .search-box {
-        width: 90%;
+        width: 80%;
+        max-width: 500px;
     }
+
+
+    /* TOP MENU */
+
+    .top-menu {
+        display: none;
+    }
+
+
+    /* ICONS */
+
+    .header-icons {
+        width: 100%;
+
+        justify-content: center;
+    }
+
+
+    /* NAVBAR */
 
     nav {
+        width: 100%;
+
         gap: 15px;
+
         flex-wrap: wrap;
+
+        justify-content: center;
     }
 
+
+    /* HERO */
+
     .hero {
+        width: 100%;
+
         flex-direction: column;
+
         text-align: center;
+
+        padding: 30px 20px;
+
+        min-height: auto;
     }
 
     .hero-text {
         width: 100%;
     }
 
+    .hero-text h1 {
+        font-size: 30px;
+    }
+
     .hero-image {
         width: 100%;
     }
 
+    .hero-image img {
+        width: 80%;
+
+        max-width: 400px;
+    }
+
+
+    /* DEALS */
+
     .deal-container {
         flex-wrap: wrap;
+
+        justify-content: center;
     }
 
     .deal {
-        min-width: 28%;
+        flex: 0 0 30%;
     }
+
+
+    /* PRODUCTS */
 
     .products {
-        flex-direction: column;
+        flex-wrap: wrap;
     }
+
+    .product-card {
+        flex: 0 0 calc(50% - 10px);
+    }
+
+
+    /* LAUNCHES */
 
     .launches {
-        overflow-x: auto;
-        gap: 25px;
+        flex-wrap: wrap;
+
+        justify-content: center;
     }
+
+
+    /* OFFERS */
 
     .offers {
-        overflow-x: auto;
-        gap: 25px;
+        flex-wrap: wrap;
+
+        justify-content: center;
     }
 
+
+    /* ARTICLES */
+
     .articles {
-        flex-direction: column;
+        flex-wrap: wrap;
     }
+
+    .articles article {
+        flex: 0 0 calc(50% - 10px);
+    }
+
+
+    /* FOOTER */
 
     footer {
         flex-wrap: wrap;
-        gap: 30px;
+
+        justify-content: center;
+    }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 480px) {
+
+    /* EVERYTHING FULL WIDTH */
+
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+
+        overflow-x: hidden;
     }
 
+    header,
+    .top-header,
+    nav,
+    .hero,
+    .newsletter,
+    footer {
+        width: 100%;
+        max-width: 100%;
+
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+
+    /* HEADER */
+
+    .top-header {
+        flex-direction: column;
+
+        padding: 10px 15px;
+
+        gap: 10px;
+    }
+
+
+    /* LOGO */
+
+    .logo {
+        width: 100%;
+
+        justify-content: center;
+    }
+
+    .logo h2 {
+        font-size: 18px;
+    }
+
+    .logo i {
+        font-size: 22px;
+    }
+
+
+    /* SEARCH */
+
+    .search-box {
+        width: 100%;
+
+        max-width: 100%;
+    }
+
+    .search-box input {
+        padding: 10px;
+
+        font-size: 12px;
+    }
+
+    .search-box button {
+        width: 45px;
+    }
+
+
+    /* ICONS */
+
+    .header-icons {
+        width: 100%;
+
+        justify-content: center;
+
+        gap: 25px;
+    }
+
+
+    /* NAVBAR */
+
+    nav {
+        display: grid;
+
+        grid-template-columns: repeat(3, 1fr);
+
+        gap: 0;
+
+        padding: 8px 5px;
+    }
+
+    nav a {
+        text-align: center;
+
+        padding: 7px 3px;
+
+        font-size: 12px;
+    }
+
+
+    /* HERO */
+
+    .hero {
+        width: 100%;
+
+        flex-direction: column;
+
+        padding: 25px 10px 15px;
+
+        text-align: center;
+
+        min-height: auto;
+    }
+
+    .hero-text {
+        width: 100%;
+    }
+
+    .hero-text h1 {
+        font-size: 25px;
+
+        line-height: 1.2;
+    }
+
+    .hero-text h3 {
+        font-size: 17px;
+    }
+
+    .hero-text p {
+        font-size: 13px;
+    }
+
+    .hero-text button {
+        padding: 10px 22px;
+    }
+
+
+    /* PHONE IMAGE */
+
+    .hero-image {
+        width: 100%;
+
+        display: flex;
+
+        justify-content: center;
+
+        margin-top: 5px;
+    }
+
+    .hero-image img {
+        display: block;
+
+        width: 75%;
+
+        max-width: 300px;
+
+        height: auto;
+
+        margin: 0 auto;
+    }
+
+
+    /* CONTAINER */
+
+    .container {
+        width: 92%;
+
+        max-width: 1200px;
+
+        margin: 25px auto;
+    }
+
+
+    /* DEALS */
+
+    .deal-container {
+        width: 100%;
+
+        display: grid;
+
+        grid-template-columns: repeat(3, 1fr);
+
+        gap: 5px;
+    }
+
+    .deal {
+        width: 100%;
+
+        min-width: 0;
+    }
+
+    .deal img {
+        width: 100%;
+
+        height: 75px;
+
+        object-fit: contain;
+    }
+
+    .deal h4 {
+        font-size: 11px;
+
+        line-height: 1.2;
+    }
+
+    .deal p {
+        font-size: 10px;
+    }
+
+    .deal pre {
+        font-size: 9px;
+
+        white-space: normal;
+    }
+
+
+    /* PRODUCTS */
+
+    .products {
+        width: 100%;
+
+        flex-direction: column;
+
+        gap: 15px;
+    }
+
+    .product-card {
+        width: 100%;
+
+        flex: none;
+    }
+
+
+    /* LAUNCHES */
+
+    .launches {
+        width: 100%;
+
+        display: grid;
+
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: 20px;
+    }
+
+    .launches img {
+        width: 100px;
+
+        height: 100px;
+    }
+
+
+    /* OFFERS */
+
+    .offers {
+        width: 100%;
+
+        display: grid;
+
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: 15px;
+    }
+
+    .offers img {
+        width: 100%;
+
+        height: 100px;
+    }
+
+
+    /* ARTICLES */
+
+    .articles {
+        width: 100%;
+
+        flex-direction: column;
+
+        gap: 20px;
+    }
+
+    .articles article {
+        width: 100%;
+
+        flex: none;
+    }
+
+    .articles img {
+        width: 100%;
+
+        height: auto;
+    }
+
+
+    /* NEWSLETTER */
+
+    .newsletter {
+        width: 100%;
+
+        padding: 25px 15px;
+    }
+
+    .newsletter-box {
+        flex-direction: column;
+
+        gap: 10px;
+    }
+
+    .newsletter-box input {
+        width: 100%;
+
+        max-width: 100%;
+    }
+
+    .newsletter-box button {
+        width: 100%;
+    }
+
+
+    /* FOOTER */
+
+    footer {
+        width: 100%;
+
+        flex-direction: column;
+
+        padding: 30px 20px;
+
+        gap: 25px;
+    }
+
+    .footer-column {
+        width: 100%;
+    }
 }
