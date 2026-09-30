@@ -145,54 +145,6 @@ nav a {
 nav a:hover {
     color: rgb(12, 227, 195);
 }
-
-
-/* =========================================
-   HERO
-========================================= */
-
-.hero {
-    width: 100%;
-    min-height: 400px;
-
-    background-color: #eaf7ff;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-
-    padding: 20px 10%;
-    gap: 30px;
-}
-
-.hero-text {
-    width: 50%;
-}
-
-.hero-text p {
-    margin: 8px 0;
-}
-
-.hero-text h1 {
-    font-size: 32px;
-    color: #222;
-}
-
-.hero-text h3 {
-    color: #087bc4;
-    margin: 10px 0;
-}
-
-.hero-text button {
-    background-color: #087bc4;
-    color: white;
-
-    border: none;
-
-    padding: 12px 25px;
-
-    cursor: pointer;
-}
 /* =========================
    NAVBAR
 ========================= */
@@ -290,6 +242,54 @@ nav a:hover {
         text-align: right;
     }
 }
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero {
+    width: 100%;
+    min-height: 400px;
+
+    background-color: #eaf7ff;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    padding: 20px 10%;
+    gap: 30px;
+}
+
+.hero-text {
+    width: 50%;
+}
+
+.hero-text p {
+    margin: 8px 0;
+}
+
+.hero-text h1 {
+    font-size: 32px;
+    color: #222;
+}
+
+.hero-text h3 {
+    color: #087bc4;
+    margin: 10px 0;
+}
+
+.hero-text button {
+    background-color: #087bc4;
+    color: white;
+
+    border: none;
+
+    padding: 12px 25px;
+
+    cursor: pointer;
+}
+
 
 /* HERO IMAGE */
 
