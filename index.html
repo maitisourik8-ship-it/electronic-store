@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="style2.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
+    <script>
+function toggleMenu() {
+    document.getElementById("navLinks").classList.toggle("active");
+}
+</script>
 <body>
     <header>
         <div class="top-header">
@@ -31,16 +36,24 @@
 
             </div>
         </div>
-        <nav>
-            <a href="#">Home</a>
-            <a href="#">shop</a>
-            <a href="#">Categories</a>
-            <a href="#">Products</a>
-            <a href="#">Deals</a>
-            <a href="#">Contact</a>
-            <a href="#">Details</a>
-            <a href="#">Offers</a>
-        </nav>
+      <nav class="navbar">
+
+    <div class="menu-toggle" onclick="toggleMenu()">
+        ☰
+    </div>
+
+    <div class="nav-links" id="navLinks">
+        <a href="#">Home</a>
+        <a href="#">Shop</a>
+        <a href="#">Categories</a>
+        <a href="#">Products</a>
+        <a href="#">Deals</a>
+        <a href="#">Contact</a>
+        <a href="#">Details</a>
+        <a href="#">Offers</a>
+    </div>
+
+</nav>
     </header>
     <section class="hero">
         <div class="hero-text">
