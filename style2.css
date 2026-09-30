@@ -193,7 +193,103 @@ nav a:hover {
 
     cursor: pointer;
 }
+/* =========================
+   NAVBAR
+========================= */
 
+.navbar {
+    background-color: #087bc4;
+    padding: 12px;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.nav-links a:hover {
+    color: rgb(12, 227, 195);
+}
+
+
+/* HAMBURGER */
+
+.menu-toggle {
+    display: none;
+
+    color: white;
+    font-size: 28px;
+
+    cursor: pointer;
+
+    text-align: right;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 480px) {
+
+    .navbar {
+        padding: 10px 15px;
+    }
+
+    /* Show hamburger */
+
+    .menu-toggle {
+        display: block;
+    }
+
+    /* Hide menu initially */
+
+    .nav-links {
+        display: none;
+
+        flex-direction: column;
+
+        gap: 0;
+
+        width: 100%;
+
+        text-align: center;
+    }
+
+    /* Show menu when active */
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links a {
+        width: 100%;
+
+        padding: 12px 0;
+
+        font-size: 14px;
+    }
+
+@media (max-width: 480px) {
+    .navbar {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    .menu-toggle {
+        margin-left: auto;
+        text-align: right;
+    }
+}
 
 /* HERO IMAGE */
 
