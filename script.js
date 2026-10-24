@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", function () {
 
     // 1. NAVBAR HAMBURGER MENU
@@ -215,4 +214,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
+
+
 
