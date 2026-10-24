@@ -15,7 +15,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     };
 
-    // Close menu after clicking a navigation link
     if (navLinks) {
         navLinks.querySelectorAll("a").forEach(function (link) {
             link.addEventListener("click", function (event) {
@@ -56,10 +55,8 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-
     // 2. SMOOTH PAGE SCROLLING
     document.documentElement.style.scrollBehavior = "smooth";
-
 
     // 3. SEARCH PRODUCTS
     const searchInput = document.querySelector(".search-box input");
@@ -69,23 +66,17 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!searchInput) return;
 
         const searchText = searchInput.value.toLowerCase().trim();
-
         const products = document.querySelectorAll(
-            ".product-card, .launches > div, " +
-            ".offers > div, .deal-container > .deal"
+            ".product-card, .launches > div, .offers > div, .deal-container > .deal"
         );
 
         products.forEach(function (product) {
             const text = product.textContent.toLowerCase();
-
-            product.style.display =
-                text.includes(searchText) ? "" : "none";
+            product.style.display = text.includes(searchText) ? "" : "none";
         });
 
-        // Scroll to the product section after searching
         if (searchText !== "") {
             const productSection = document.querySelector(".products");
-
             if (productSection) {
                 productSection.scrollIntoView({
                     behavior: "smooth",
@@ -107,7 +98,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-
     // 4. HERO SHOP NOW BUTTON
     const heroButton = document.querySelector(".hero-text button");
 
@@ -124,14 +114,9 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-
-    // 1. Select all deal cards
+    // 5. DEAL CARD BEHAVIOR
     const deals = document.querySelectorAll(".deal");
 
-    // 2. Add click effect to each deal card
     deals.forEach(function (deal) {
         deal.style.cursor = "pointer";
 
@@ -139,12 +124,11 @@ document.addEventListener("DOMContentLoaded", function () {
             const title = deal.querySelector("h4");
 
             if (title) {
-                alert("You selected: " + title.textContent);
+                alert("You selected: " + title.textContent.trim());
             }
         });
     });
 
-    // 3. Shop Now button for the discount card
     const shopButton = document.querySelector(".deal.discount button");
 
     if (shopButton) {
@@ -154,52 +138,43 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // 4. Image zoom effect when clicking an image
-    const images = document.querySelectorAll(".deal img");
+    const dealImages = document.querySelectorAll(".deal img");
 
-    images.forEach(function (image) {
+    dealImages.forEach(function (image) {
         image.style.cursor = "pointer";
 
         image.addEventListener("click", function (event) {
             event.stopPropagation();
 
-            image.style.transform =
-                image.style.transform === "scale(1.15)"
-                    ? "scale(1)"
-                    : "scale(1.15)";
+            const currentScale = image.style.transform || "scale(1)";
+            const nextScale = currentScale === "scale(1.15)" ? "scale(1)" : "scale(1.15)";
 
+            image.style.transform = nextScale;
             image.style.transition = "transform 0.3s ease";
         });
     });
 
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-
-    // 1. Select all product cards
+    // 6. PRODUCT CARD BEHAVIOR
     const products = document.querySelectorAll(".product-card");
+    const cart = [];
 
-    // 2. Create a cart to store added products
-    let cart = [];
-
-    // 3. Add functionality to each product
     products.forEach(function (product) {
-
-        const productName = product.querySelector("h3").textContent;
-        const productPrice = product.querySelector("p").textContent;
+        const title = product.querySelector("h3");
+        const price = product.querySelector("p");
         const buttons = product.querySelectorAll("button");
 
-        // BUY NOW button
+        if (!title || !price || buttons.length < 2) {
+            return;
+        }
+
+        const productName = title.textContent.trim();
+        const productPrice = price.textContent.trim();
+
         buttons[0].addEventListener("click", function () {
-            alert(
-                "You selected: " + productName +
-                "\nPrice: " + productPrice
-            );
+            alert("You selected: " + productName + "\nPrice: " + productPrice);
         });
 
-        // ADD TO CART button
         buttons[1].addEventListener("click", function () {
-
             cart.push({
                 name: productName,
                 price: productPrice
@@ -210,9 +185,6 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log("Your Cart:", cart);
             console.log("Total Products:", cart.length);
         });
-
     });
 
 });
-
-
