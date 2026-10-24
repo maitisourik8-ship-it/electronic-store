@@ -216,3 +216,41 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+
+    const products = document.querySelectorAll(".product-card");
+    const cartCount = document.getElementById("cart-count");
+
+    let count = 0;
+
+    products.forEach(function (product) {
+
+        const productName = product.querySelector("h3").textContent;
+        const productPrice = product.querySelector("p").textContent;
+        const buttons = product.querySelectorAll("button");
+
+        // BUY NOW button
+        buttons[0].addEventListener("click", function () {
+            alert(
+                "Product: " + productName +
+                "\nPrice: " + productPrice
+            );
+        });
+
+        // ADD TO CART button
+        buttons[1].addEventListener("click", function () {
+
+            count++;
+
+            // Show count in navbar
+            if (cartCount) {
+                cartCount.textContent = count;
+            }
+
+            alert(productName + " added to cart!");
+        });
+
+    });
+
+});
+
