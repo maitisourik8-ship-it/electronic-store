@@ -1,76 +1,68 @@
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    // 1. SMOOTH SCROLLING
-    const navLinks = document.querySelectorAll(".nav-links a");
+    // 1. NAVBAR HAMBURGER MENU
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navLinks = document.getElementById("navLinks");
 
-    navLinks.forEach(function (link) {
-        link.addEventListener("click", function (event) {
-            event.preventDefault();
-
-            const text = link.textContent.trim().toLowerCase();
-            let target = null;
-
-            // Use the sections already present in your HTML
-            if (text === "home") {
-                target = document.querySelector(".hero");
-            } else if (text === "shop") {
-                target = document.querySelector(".deal-container");
-            } else if (text === "categories") {
-                target = document.querySelector(".container");
-            } else if (text === "products") {
-                target = document.querySelector(".products");
-            } else if (text === "deals") {
-                target = document.querySelector(".deal-container");
-            } else if (text === "contact") {
-                target = document.querySelector(".newsletter");
-            } else if (text === "details") {
-                target = document.querySelector(".articles");
-            } else if (text === "offers") {
-                target = document.querySelector(".offers");
-            }
-
-            if (target) {
-                target.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start"
-                });
-            }
-
-            // Close the mobile menu
-            const nav = document.getElementById("navLinks");
-            const menu = document.querySelector(".menu-toggle");
-
-            if (nav) {
-                nav.classList.remove("active");
-            }
-
-            if (menu) {
-                menu.textContent = "☰";
-            }
-        });
-    });
-
-
-    // 2. HAMBURGER MENU
-    const nav = document.getElementById("navLinks");
-    const menu = document.querySelector(".menu-toggle");
-
-    // Works with your existing onclick="toggleMenu()"
     window.toggleMenu = function () {
-        if (!nav) return;
+        if (!navLinks) return;
 
-        nav.classList.toggle("active");
+        navLinks.classList.toggle("active");
 
-        if (menu) {
-            menu.textContent = nav.classList.contains("active")
-                ? "✕"
-                : "☰";
+        if (menuToggle) {
+            menuToggle.textContent =
+                navLinks.classList.contains("active") ? "✕" : "☰";
         }
     };
 
+    // Close menu after clicking a navigation link
+    if (navLinks) {
+        navLinks.querySelectorAll("a").forEach(function (link) {
+            link.addEventListener("click", function (event) {
+                event.preventDefault();
 
-    // 3. PRODUCT SEARCH
+                const name = link.textContent.trim().toLowerCase();
+                let target = null;
+
+                if (name === "home") {
+                    target = document.querySelector(".hero");
+                } else if (name === "shop" || name === "deals") {
+                    target = document.querySelector(".deal-container");
+                } else if (name === "categories") {
+                    target = document.querySelector(".container");
+                } else if (name === "products") {
+                    target = document.querySelector(".products");
+                } else if (name === "contact") {
+                    target = document.querySelector(".newsletter");
+                } else if (name === "details") {
+                    target = document.querySelector(".articles");
+                } else if (name === "offers") {
+                    target = document.querySelector(".offers");
+                }
+
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
+                }
+
+                navLinks.classList.remove("active");
+
+                if (menuToggle) {
+                    menuToggle.textContent = "☰";
+                }
+            });
+        });
+    }
+
+
+    // 2. SMOOTH PAGE SCROLLING
+    document.documentElement.style.scrollBehavior = "smooth";
+
+
+    // 3. SEARCH PRODUCTS
     const searchInput = document.querySelector(".search-box input");
     const searchButton = document.querySelector(".search-box button");
 
@@ -85,16 +77,30 @@ document.addEventListener("DOMContentLoaded", function () {
         );
 
         products.forEach(function (product) {
-            const productText = product.textContent.toLowerCase();
+            const text = product.textContent.toLowerCase();
 
             product.style.display =
-                productText.includes(searchText) ? "" : "none";
+                text.includes(searchText) ? "" : "none";
         });
+
+        // Scroll to the product section after searching
+        if (searchText !== "") {
+            const productSection = document.querySelector(".products");
+
+            if (productSection) {
+                productSection.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+            }
+        }
+    }
+
+    if (searchButton) {
+        searchButton.addEventListener("click", searchProducts);
     }
 
     if (searchInput) {
-        searchInput.addEventListener("input", searchProducts);
-
         searchInput.addEventListener("keydown", function (event) {
             if (event.key === "Enter") {
                 searchProducts();
@@ -102,69 +108,111 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    if (searchButton) {
-        searchButton.addEventListener("click", searchProducts);
+
+    // 4. HERO SHOP NOW BUTTON
+    const heroButton = document.querySelector(".hero-text button");
+
+    if (heroButton) {
+        heroButton.addEventListener("click", function () {
+            const deals = document.querySelector(".deal-container");
+
+            if (deals) {
+                deals.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+            }
+        });
     }
 
+});
 
-    // 4. BUY NOW BUTTONS
-    const buyButtons = document.querySelectorAll(".product-card button");
-    let cartCount = 0;
+document.addEventListener("DOMContentLoaded", function () {
 
-    buyButtons.forEach(function (button) {
-        button.addEventListener("click", function () {
-            const card = button.closest(".product-card");
+    // 1. Select all deal cards
+    const deals = document.querySelectorAll(".deal");
 
-            if (!card) return;
+    // 2. Add click effect to each deal card
+    deals.forEach(function (deal) {
+        deal.style.cursor = "pointer";
 
-            const name = card.querySelector("h3");
-            const price = card.querySelector("p");
+        deal.addEventListener("click", function () {
+            const title = deal.querySelector("h4");
 
-            cartCount++;
-
-            alert(
-                "Product: " +
-                (name ? name.textContent.trim() : "Product") +
-                "\nPrice: " +
-                (price ? price.textContent.trim() : "Not available") +
-                "\n\nAdded to cart!\nTotal selected: " + cartCount
-            );
+            if (title) {
+                alert("You selected: " + title.textContent);
+            }
         });
     });
 
+    // 3. Shop Now button for the discount card
+    const shopButton = document.querySelector(".deal.discount button");
 
-    // 5. NEWSLETTER VALIDATION
-    const newsletter = document.querySelector(".newsletter-box");
-
-    if (newsletter) {
-        const emailInput = newsletter.querySelector('input[type="email"]');
-        const subscribeButton = newsletter.querySelector("button");
-
-        if (emailInput && subscribeButton) {
-            subscribeButton.addEventListener("click", function () {
-                const email = emailInput.value.trim();
-
-                if (email === "") {
-                    alert("Please enter your email address.");
-                    emailInput.focus();
-                    return;
-                }
-
-                if (!emailInput.checkValidity()) {
-                    alert("Please enter a valid email address.");
-                    emailInput.focus();
-                    return;
-                }
-
-                alert("Thank you for subscribing!");
-                emailInput.value = "";
-            });
-        }
+    if (shopButton) {
+        shopButton.addEventListener("click", function (event) {
+            event.stopPropagation();
+            alert("Welcome to our special 30% OFF deals!");
+        });
     }
 
+    // 4. Image zoom effect when clicking an image
+    const images = document.querySelectorAll(".deal img");
 
-    // 6. ENABLE SMOOTH PAGE SCROLLING
-    document.documentElement.style.scrollBehavior = "smooth";
+    images.forEach(function (image) {
+        image.style.cursor = "pointer";
+
+        image.addEventListener("click", function (event) {
+            event.stopPropagation();
+
+            image.style.transform =
+                image.style.transform === "scale(1.15)"
+                    ? "scale(1)"
+                    : "scale(1.15)";
+
+            image.style.transition = "transform 0.3s ease";
+        });
+    });
+
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    // 1. Select all product cards
+    const products = document.querySelectorAll(".product-card");
+
+    // 2. Create a cart to store added products
+    let cart = [];
+
+    // 3. Add functionality to each product
+    products.forEach(function (product) {
+
+        const productName = product.querySelector("h3").textContent;
+        const productPrice = product.querySelector("p").textContent;
+        const buttons = product.querySelectorAll("button");
+
+        // BUY NOW button
+        buttons[0].addEventListener("click", function () {
+            alert(
+                "You selected: " + productName +
+                "\nPrice: " + productPrice
+            );
+        });
+
+        // ADD TO CART button
+        buttons[1].addEventListener("click", function () {
+
+            cart.push({
+                name: productName,
+                price: productPrice
+            });
+
+            alert(productName + " added to your cart!");
+
+            console.log("Your Cart:", cart);
+            console.log("Total Products:", cart.length);
+        });
+
+    });
 
 });
 
